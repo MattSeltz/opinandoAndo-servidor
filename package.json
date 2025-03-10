@@ -1,0 +1,23 @@
+{
+	"name": "servidor",
+	"version": "1.0.0",
+	"description": "Servidor de la aplicación web 'XYZ'",
+	"main": "index.js",
+	"scripts": {
+		"start": "npm run build && node --env-file .env dist/index.js",
+		"build": "tsc"
+	},
+	"keywords": [
+		"social",
+		"red",
+		"xyz"
+	],
+	"author": "Matías Seltzer",
+	"license": "ISC",
+	"type": "commonjs",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.21.2",
+		"mongoose": "^8.12.1"
+	}
+}
