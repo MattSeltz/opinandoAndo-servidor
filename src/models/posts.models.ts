@@ -4,8 +4,8 @@ interface IPost extends Document {
 	title: string;
 	body: string;
 	author: Types.ObjectId;
-	likes: Types.ObjectId[];
-	disLikes: Types.ObjectId[];
+	acuerdo: Types.ObjectId[];
+	desacuerdo: Types.ObjectId[];
 }
 
 const postSchema = new Schema<IPost>(
@@ -23,8 +23,8 @@ const postSchema = new Schema<IPost>(
 			ref: "User",
 			required: true,
 		},
-		likes: [{ type: Schema.Types.ObjectId, ref: "User" }],
-		disLikes: [{ type: Schema.Types.ObjectId, ref: "User" }],
+		acuerdo: [{ type: Schema.Types.ObjectId, ref: "User" }],
+		desacuerdo: [{ type: Schema.Types.ObjectId, ref: "User" }],
 	},
 	{ timestamps: true }
 );

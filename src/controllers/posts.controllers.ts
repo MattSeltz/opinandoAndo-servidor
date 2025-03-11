@@ -4,7 +4,11 @@ import { Post } from "../models/posts.models";
 
 export const getData = async (req: Request, res: Response) => {
 	try {
-		const post = await Post.find().populate(["author", "likes", "disLikes"]);
+		const post = await Post.find().populate([
+			"author",
+			"acuerdo",
+			"desacuerdo",
+		]);
 		res.json(post);
 	} catch (error) {
 		console.error(error);
@@ -18,8 +22,8 @@ export const getOneData = async (req: Request, res: Response) => {
 	try {
 		const post = await Post.findById(id).populate([
 			"author",
-			"likes",
-			"disLikes",
+			"acuerdo",
+			"desacuerdo",
 		]);
 		res.json(post);
 	} catch (error) {

@@ -4,6 +4,9 @@ interface IUser extends Document {
 	username: string;
 	password: string;
 	email: string;
+	date: string;
+	sex: string;
+	country: string;
 	posts: Types.ObjectId[];
 }
 
@@ -21,6 +24,19 @@ const userSchema = new Schema<IUser>(
 			type: String,
 			required: true,
 			unique: true,
+		},
+		date: {
+			type: String,
+			required: true,
+		},
+		sex: {
+			type: String,
+			enum: ["Masculino", "Femenino"],
+			required: true,
+		},
+		country: {
+			type: String,
+			required: true,
 		},
 		posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
 	},
