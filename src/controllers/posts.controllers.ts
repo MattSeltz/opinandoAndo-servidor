@@ -33,10 +33,10 @@ export const getOneData = async (req: Request, res: Response) => {
 };
 
 export const postData = async (req: Request, res: Response) => {
-	const { title, body, author } = req.body;
+	const { title, body, author, date } = req.body;
 
 	try {
-		const post = new Post({ title, body, author });
+		const post = new Post({ title, body, author, date });
 		await post.save();
 		res.json(post);
 	} catch (error) {
@@ -47,12 +47,12 @@ export const postData = async (req: Request, res: Response) => {
 
 export const putData = async (req: Request, res: Response) => {
 	const { id } = req.params;
-	const { title, body, author } = req.body;
+	const { title, body, author, date } = req.body;
 
 	try {
 		const post = await Post.findByIdAndUpdate(
 			id,
-			{ title, body, author },
+			{ title, body, author, date },
 			{ new: true }
 		);
 		res.json(post);

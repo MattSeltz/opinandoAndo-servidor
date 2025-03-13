@@ -43,9 +43,9 @@ const getOneData = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.getOneData = getOneData;
 const postData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { title, body, author } = req.body;
+    const { title, body, author, date } = req.body;
     try {
-        const post = new posts_models_1.Post({ title, body, author });
+        const post = new posts_models_1.Post({ title, body, author, date });
         yield post.save();
         res.json(post);
     }
@@ -57,9 +57,9 @@ const postData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.postData = postData;
 const putData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { title, body, author } = req.body;
+    const { title, body, author, date } = req.body;
     try {
-        const post = yield posts_models_1.Post.findByIdAndUpdate(id, { title, body, author }, { new: true });
+        const post = yield posts_models_1.Post.findByIdAndUpdate(id, { title, body, author, date }, { new: true });
         res.json(post);
     }
     catch (error) {

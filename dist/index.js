@@ -17,7 +17,6 @@ const cors_1 = __importDefault(require("cors"));
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const configs_1 = require("./configs/configs");
 const mongoose_1 = require("./db/mongoose");
-const auth_1 = require("./middlewares/auth");
 const users_routes_1 = __importDefault(require("./routes/users.routes"));
 const posts_routes_1 = __importDefault(require("./routes/posts.routes"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
@@ -29,8 +28,8 @@ app.use((0, cors_1.default)({
     credentials: true,
 }));
 app.use((0, cookie_parser_1.default)());
-app.use("/users", auth_1.authMiddleware, users_routes_1.default);
-app.use("/posts", auth_1.authMiddleware, posts_routes_1.default);
+app.use("/users", users_routes_1.default);
+app.use("/posts", posts_routes_1.default);
 app.use("/auth", auth_routes_1.default);
 app.get("/", (_, res) => {
     res.send(`<h1>XYZ</h1>`);

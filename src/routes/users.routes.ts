@@ -1,5 +1,7 @@
 import { Router } from "express";
 
+import { authMiddleware } from "../middlewares/auth";
+
 import {
 	deleteData,
 	getData,
@@ -11,7 +13,7 @@ const router = Router();
 
 router.get("/", getData);
 router.get("/:id", getOneData);
-router.put("/:id", putData);
-router.delete("/:id", deleteData);
+router.put("/:id", authMiddleware, putData);
+router.delete("/:id", authMiddleware, deleteData);
 
 export default router;

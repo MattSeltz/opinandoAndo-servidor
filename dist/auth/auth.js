@@ -60,7 +60,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             sameSite: "strict",
             maxAge: 3600000,
         });
-        res.json({ message: "Login exitoso" });
+        res.json({ message: "Login exitoso", id: user._id });
     }
     catch (error) {
         console.error(error);

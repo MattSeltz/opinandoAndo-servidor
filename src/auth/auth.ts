@@ -51,7 +51,7 @@ export const login = async (req: Request, res: Response) => {
 			sameSite: "strict",
 			maxAge: 3600000,
 		});
-		res.json({ message: "Login exitoso" });
+		res.json({ message: "Login exitoso", id: user._id });
 	} catch (error) {
 		console.error(error);
 		res.status(400).json(error);
