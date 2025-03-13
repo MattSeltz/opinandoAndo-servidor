@@ -3,6 +3,7 @@ import { Schema, model, Document, Types } from "mongoose";
 interface IPost extends Document {
 	title: string;
 	body: string;
+	date: string;
 	author: Types.ObjectId;
 	acuerdo: Types.ObjectId[];
 	desacuerdo: Types.ObjectId[];
@@ -15,6 +16,10 @@ const postSchema = new Schema<IPost>(
 			required: true,
 		},
 		body: {
+			type: String,
+			required: true,
+		},
+		date: {
 			type: String,
 			required: true,
 		},
