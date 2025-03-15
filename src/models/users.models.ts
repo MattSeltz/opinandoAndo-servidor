@@ -43,4 +43,11 @@ const userSchema = new Schema<IUser>(
 	{ timestamps: true }
 );
 
+userSchema.set("toJSON", {
+	transform: (_doc, ret) => {
+		delete ret.password;
+		return ret;
+	},
+});
+
 export const User = model<IUser>("User", userSchema);

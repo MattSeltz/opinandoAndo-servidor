@@ -13,7 +13,10 @@ exports.deleteData = exports.putData = exports.getOneData = exports.getData = vo
 const users_models_1 = require("../models/users.models");
 const getData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user = yield users_models_1.User.find().populate("posts");
+        const user = yield users_models_1.User.find().populate({
+            path: "posts",
+            populate: "author",
+        });
         res.json(user);
     }
     catch (error) {
@@ -25,7 +28,10 @@ exports.getData = getData;
 const getOneData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     try {
-        const user = yield users_models_1.User.findById(id).populate("posts");
+        const user = yield users_models_1.User.findById(id).populate({
+            path: "posts",
+            populate: "author",
+        });
         res.json(user);
     }
     catch (error) {

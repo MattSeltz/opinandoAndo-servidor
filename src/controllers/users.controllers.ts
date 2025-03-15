@@ -4,7 +4,10 @@ import { User } from "../models/users.models";
 
 export const getData = async (req: Request, res: Response) => {
 	try {
-		const user = await User.find().populate("posts");
+		const user = await User.find().populate({
+			path: "posts",
+			populate: "author",
+		});
 		res.json(user);
 	} catch (error) {
 		console.error(error);
@@ -16,7 +19,10 @@ export const getOneData = async (req: Request, res: Response) => {
 	const { id } = req.params;
 
 	try {
-		const user = await User.findById(id).populate("posts");
+		const user = await User.findById(id).populate({
+			path: "posts",
+			populate: "author",
+		});
 		res.json(user);
 	} catch (error) {
 		console.error(error);
