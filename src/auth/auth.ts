@@ -51,6 +51,12 @@ export const login = async (req: Request, res: Response) => {
 			sameSite: "strict",
 			maxAge: 3600000,
 		});
+		res.cookie("userId", `${user._id}`, {
+			httpOnly: true,
+			secure: NODE_ENV === "production",
+			sameSite: "strict",
+			maxAge: 3600000,
+		});
 		res.json({ message: "Login exitoso", id: user._id });
 	} catch (error) {
 		console.error(error);
@@ -60,6 +66,11 @@ export const login = async (req: Request, res: Response) => {
 
 export const logout = (req: Request, res: Response) => {
 	res.clearCookie("token", {
+		httpOnly: true,
+		secure: NODE_ENV === "production",
+		sameSite: "strict",
+	});
+	res.clearCookie("userId", {
 		httpOnly: true,
 		secure: NODE_ENV === "production",
 		sameSite: "strict",

@@ -60,6 +60,12 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             sameSite: "strict",
             maxAge: 3600000,
         });
+        res.cookie("userId", `${user._id}`, {
+            httpOnly: true,
+            secure: configs_1.NODE_ENV === "production",
+            sameSite: "strict",
+            maxAge: 3600000,
+        });
         res.json({ message: "Login exitoso", id: user._id });
     }
     catch (error) {
@@ -70,6 +76,11 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.login = login;
 const logout = (req, res) => {
     res.clearCookie("token", {
+        httpOnly: true,
+        secure: configs_1.NODE_ENV === "production",
+        sameSite: "strict",
+    });
+    res.clearCookie("userId", {
         httpOnly: true,
         secure: configs_1.NODE_ENV === "production",
         sameSite: "strict",
