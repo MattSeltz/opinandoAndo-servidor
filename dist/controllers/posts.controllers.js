@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteData = exports.putData = exports.postData = exports.getOneData = exports.getData = void 0;
+exports.voteData = exports.deleteData = exports.putData = exports.postData = exports.getOneData = exports.getData = void 0;
 const posts_models_1 = require("../models/posts.models");
 const getData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -80,3 +80,16 @@ const deleteData = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.deleteData = deleteData;
+const voteData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { userId, type } = req.body;
+    try {
+        const post = yield posts_models_1.Post.findByIdAndUpdate(id, { $push: { [type]: userId } }, { new: true });
+        res.json(post);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(400).json(error);
+    }
+});
+exports.voteData = voteData;

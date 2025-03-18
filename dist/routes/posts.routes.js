@@ -9,4 +9,5 @@ router.get("/:id", posts_controllers_1.getOneData);
 router.post("/", auth_1.authMiddleware, posts_controllers_1.postData);
 router.put("/:id", auth_1.authMiddleware, posts_controllers_1.putData);
 router.delete("/:id", auth_1.authMiddleware, posts_controllers_1.deleteData);
+router.put("/vote/:id", auth_1.authMiddleware, posts_controllers_1.voteData);
 exports.default = router;

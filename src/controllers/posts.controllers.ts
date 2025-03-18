@@ -73,3 +73,20 @@ export const deleteData = async (req: Request, res: Response) => {
 		res.status(400).json(error);
 	}
 };
+
+export const voteData = async (req: Request, res: Response) => {
+	const { id } = req.params;
+	const { userId, type } = req.body;
+
+	try {
+		const post = await Post.findByIdAndUpdate(
+			id,
+			{ $push: { [type]: userId } },
+			{ new: true }
+		);
+		res.json(post);
+	} catch (error) {
+		console.error(error);
+		res.status(400).json(error);
+	}
+};
