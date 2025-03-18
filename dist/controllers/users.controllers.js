@@ -42,9 +42,9 @@ const getOneData = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 exports.getOneData = getOneData;
 const putData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
-    const { username, password, email } = req.body;
+    const { username, email, date, sex, country } = req.body;
     try {
-        const user = yield users_models_1.User.findByIdAndUpdate(id, { username, password, email }, { new: true });
+        const user = yield users_models_1.User.findByIdAndUpdate(id, { username, email, date, sex, country }, { new: true });
         res.json(user);
     }
     catch (error) {

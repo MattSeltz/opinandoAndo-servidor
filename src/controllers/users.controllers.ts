@@ -32,12 +32,12 @@ export const getOneData = async (req: Request, res: Response) => {
 
 export const putData = async (req: Request, res: Response) => {
 	const { id } = req.params;
-	const { username, password, email } = req.body;
+	const { username, email, date, sex, country } = req.body;
 
 	try {
 		const user = await User.findByIdAndUpdate(
 			id,
-			{ username, password, email },
+			{ username, email, date, sex, country },
 			{ new: true }
 		);
 		res.json(user);
