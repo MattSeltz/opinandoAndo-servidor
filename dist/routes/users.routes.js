@@ -8,4 +8,6 @@ router.get("/", users_controllers_1.getData);
 router.get("/:id", users_controllers_1.getOneData);
 router.put("/:id", auth_1.authMiddleware, users_controllers_1.putData);
 router.delete("/:id", auth_1.authMiddleware, users_controllers_1.deleteData);
+router.put("/addPost/:id", auth_1.authMiddleware, users_controllers_1.addPost);
+router.delete("/deletePost/:id", auth_1.authMiddleware, users_controllers_1.deletePost);
 exports.default = router;

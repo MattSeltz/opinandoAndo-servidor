@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteData = exports.putData = exports.getOneData = exports.getData = void 0;
+exports.deletePost = exports.addPost = exports.deleteData = exports.putData = exports.getOneData = exports.getData = void 0;
 const users_models_1 = require("../models/users.models");
 const getData = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -65,3 +65,29 @@ const deleteData = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     }
 });
 exports.deleteData = deleteData;
+const addPost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { postId } = req.body;
+    try {
+        const user = yield users_models_1.User.findByIdAndUpdate(id, { $push: { posts: postId } }, { new: true });
+        res.json(user);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(400).json(error);
+    }
+});
+exports.addPost = addPost;
+const deletePost = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { postId } = req.body;
+    try {
+        const user = yield users_models_1.User.findByIdAndUpdate(id, { $pull: { posts: postId } }, { new: true });
+        res.json(user);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(400).json(error);
+    }
+});
+exports.deletePost = deletePost;

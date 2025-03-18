@@ -31,4 +31,10 @@ const userSchema = new mongoose_1.Schema({
     },
     posts: [{ type: mongoose_1.Schema.Types.ObjectId, ref: "Post" }],
 }, { timestamps: true });
+userSchema.set("toJSON", {
+    transform: (_doc, ret) => {
+        delete ret.password;
+        return ret;
+    },
+});
 exports.User = (0, mongoose_1.model)("User", userSchema);
