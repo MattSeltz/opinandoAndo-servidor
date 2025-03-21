@@ -77,3 +77,17 @@ export const logout = (req: Request, res: Response) => {
 	});
 	res.json({ message: "Sesión cerrada correctamente" });
 };
+
+export const recovery = async (req: Request, res: Response) => {
+	const { password } = req.body;
+	const { id } = req.params;
+
+	try {
+		const salt = await bcrypt.genSalt(10);
+		const hashedPassword = await bcrypt.hash(password, salt);
+		await User.findByIdAndUpdate(id, { password: hashedPassword });
+		res.status(201).json({ message: "Contraseña registrada con éxito" });
+	} catch (error) {
+		res.status(500).json({ error: "Error al registrar la contraseña" });
+	}
+};

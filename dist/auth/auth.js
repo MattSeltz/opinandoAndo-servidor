@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logout = exports.login = exports.register = void 0;
+exports.recovery = exports.logout = exports.login = exports.register = void 0;
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const configs_1 = require("../configs/configs");
@@ -88,3 +88,17 @@ const logout = (req, res) => {
     res.json({ message: "Sesión cerrada correctamente" });
 };
 exports.logout = logout;
+const recovery = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { password } = req.body;
+    const { id } = req.params;
+    try {
+        const salt = yield bcrypt_1.default.genSalt(10);
+        const hashedPassword = yield bcrypt_1.default.hash(password, salt);
+        yield users_models_1.User.findByIdAndUpdate(id, { password: hashedPassword });
+        res.status(201).json({ message: "Contraseña registrada con éxito" });
+    }
+    catch (error) {
+        res.status(500).json({ error: "Error al registrar la contraseña" });
+    }
+});
+exports.recovery = recovery;

@@ -20,6 +20,7 @@ const mongoose_1 = require("./db/mongoose");
 const users_routes_1 = __importDefault(require("./routes/users.routes"));
 const posts_routes_1 = __importDefault(require("./routes/posts.routes"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
+const email_routes_1 = __importDefault(require("./routes/email.routes"));
 const app = (0, express_1.default)();
 app.disable("x-powered-by");
 app.use(express_1.default.json());
@@ -31,6 +32,7 @@ app.use((0, cookie_parser_1.default)());
 app.use("/users", users_routes_1.default);
 app.use("/posts", posts_routes_1.default);
 app.use("/auth", auth_routes_1.default);
+app.use("/email", email_routes_1.default);
 app.get("/", (_, res) => {
     res.send(`<h1>XYZ</h1>`);
 });

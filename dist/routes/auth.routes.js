@@ -6,4 +6,5 @@ const router = (0, express_1.Router)();
 router.post("/register", auth_1.register);
 router.post("/login", auth_1.login);
 router.post("/logout", auth_1.logout);
+router.put("/recovery/:id", auth_1.recovery);
 exports.default = router;
