@@ -48,13 +48,13 @@ export const login = async (req: Request, res: Response) => {
 		res.cookie("token", token, {
 			httpOnly: true,
 			secure: NODE_ENV === "production",
-			sameSite: "None",
+			sameSite: "none",
 			maxAge: 3600000,
 		});
 		res.cookie("userId", `${user._id}`, {
 			httpOnly: true,
 			secure: NODE_ENV === "production",
-			sameSite: "None",
+			sameSite: "none",
 			maxAge: 3600000,
 		});
 		res.json({ message: "Login exitoso", id: user._id });
@@ -68,12 +68,12 @@ export const logout = (req: Request, res: Response) => {
 	res.clearCookie("token", {
 		httpOnly: true,
 		secure: NODE_ENV === "production",
-		sameSite: "None",
+		sameSite: "none",
 	});
 	res.clearCookie("userId", {
 		httpOnly: true,
 		secure: NODE_ENV === "production",
-		sameSite: "None",
+		sameSite: "none",
 	});
 	res.json({ message: "Sesión cerrada correctamente" });
 };
