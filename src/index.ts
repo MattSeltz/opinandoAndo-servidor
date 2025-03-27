@@ -13,8 +13,6 @@ import emailRoutes from "./routes/email.routes";
 
 const app = express();
 
-app.set('trust proxy', 1);
-
 app.disable("x-powered-by");
 
 app.use(express.json());
@@ -25,11 +23,6 @@ app.use(
 	})
 );
 app.use(cookieParser());
-
-app.use((req, res, next) => {
-	res.setHeader("Access-Control-Allow-Credentials", "true");
-	next();
-});
 
 app.use("/users", usersRoutes);
 app.use("/posts", postsRoutes);

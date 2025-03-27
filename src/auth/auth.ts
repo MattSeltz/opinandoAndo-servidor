@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-import { JWT_SECRET, NODE_ENV, ORIGIN } from "../configs/configs";
+import { JWT_SECRET, NODE_ENV } from "../configs/configs";
 
 import { User } from "../models/users.models";
 
@@ -51,7 +51,6 @@ export const login = async (req: Request, res: Response) => {
 			sameSite: NODE_ENV === "production" ? "none" : "strict",
 			maxAge: 3600000,
 			path: "/",
-			domain: ORIGIN,
 		});
 		res.cookie("userId", `${user._id}`, {
 			httpOnly: true,
@@ -59,7 +58,6 @@ export const login = async (req: Request, res: Response) => {
 			sameSite: NODE_ENV === "production" ? "none" : "strict",
 			maxAge: 3600000,
 			path: "/",
-			domain: ORIGIN,
 		});
 		res.json({ message: "Login exitoso", id: user._id });
 	} catch (error) {
@@ -74,14 +72,12 @@ export const logout = (req: Request, res: Response) => {
 		secure: NODE_ENV === "production",
 		sameSite: NODE_ENV === "production" ? "none" : "strict",
 		path: "/",
-		domain: ORIGIN,
 	});
 	res.clearCookie("userId", {
 		httpOnly: true,
 		secure: NODE_ENV === "production",
 		sameSite: NODE_ENV === "production" ? "none" : "strict",
 		path: "/",
-		domain: ORIGIN,
 	});
 	res.json({ message: "Sesión cerrada correctamente" });
 };

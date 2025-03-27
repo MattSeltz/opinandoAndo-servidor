@@ -22,7 +22,6 @@ const posts_routes_1 = __importDefault(require("./routes/posts.routes"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const email_routes_1 = __importDefault(require("./routes/email.routes"));
 const app = (0, express_1.default)();
-app.set('trust proxy', 1);
 app.disable("x-powered-by");
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({
@@ -30,10 +29,6 @@ app.use((0, cors_1.default)({
     credentials: true,
 }));
 app.use((0, cookie_parser_1.default)());
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    next();
-});
 app.use("/users", users_routes_1.default);
 app.use("/posts", posts_routes_1.default);
 app.use("/auth", auth_routes_1.default);
