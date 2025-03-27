@@ -22,6 +22,7 @@ const posts_routes_1 = __importDefault(require("./routes/posts.routes"));
 const auth_routes_1 = __importDefault(require("./routes/auth.routes"));
 const email_routes_1 = __importDefault(require("./routes/email.routes"));
 const app = (0, express_1.default)();
+app.set('trust proxy', 1);
 app.disable("x-powered-by");
 app.use(express_1.default.json());
 app.use((0, cors_1.default)({

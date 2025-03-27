@@ -13,6 +13,8 @@ import emailRoutes from "./routes/email.routes";
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 app.disable("x-powered-by");
 
 app.use(express.json());
