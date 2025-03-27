@@ -59,12 +59,14 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             secure: configs_1.NODE_ENV === "production",
             sameSite: configs_1.NODE_ENV === "production" ? "none" : "strict",
             maxAge: 3600000,
+            path: "/",
         });
         res.cookie("userId", `${user._id}`, {
             httpOnly: true,
             secure: configs_1.NODE_ENV === "production",
             sameSite: configs_1.NODE_ENV === "production" ? "none" : "strict",
             maxAge: 3600000,
+            path: "/",
         });
         res.json({ message: "Login exitoso", id: user._id });
     }
@@ -79,11 +81,13 @@ const logout = (req, res) => {
         httpOnly: true,
         secure: configs_1.NODE_ENV === "production",
         sameSite: configs_1.NODE_ENV === "production" ? "none" : "strict",
+        path: "/",
     });
     res.clearCookie("userId", {
         httpOnly: true,
         secure: configs_1.NODE_ENV === "production",
         sameSite: configs_1.NODE_ENV === "production" ? "none" : "strict",
+        path: "/",
     });
     res.json({ message: "Sesión cerrada correctamente" });
 };

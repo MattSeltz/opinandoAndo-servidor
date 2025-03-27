@@ -50,12 +50,14 @@ export const login = async (req: Request, res: Response) => {
 			secure: NODE_ENV === "production",
 			sameSite: NODE_ENV === "production" ? "none" : "strict",
 			maxAge: 3600000,
+			path: "/",
 		});
 		res.cookie("userId", `${user._id}`, {
 			httpOnly: true,
 			secure: NODE_ENV === "production",
 			sameSite: NODE_ENV === "production" ? "none" : "strict",
 			maxAge: 3600000,
+			path: "/",
 		});
 		res.json({ message: "Login exitoso", id: user._id });
 	} catch (error) {
@@ -69,11 +71,13 @@ export const logout = (req: Request, res: Response) => {
 		httpOnly: true,
 		secure: NODE_ENV === "production",
 		sameSite: NODE_ENV === "production" ? "none" : "strict",
+		path: "/",
 	});
 	res.clearCookie("userId", {
 		httpOnly: true,
 		secure: NODE_ENV === "production",
 		sameSite: NODE_ENV === "production" ? "none" : "strict",
+		path: "/",
 	});
 	res.json({ message: "Sesión cerrada correctamente" });
 };

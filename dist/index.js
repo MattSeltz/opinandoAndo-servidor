@@ -29,6 +29,10 @@ app.use((0, cors_1.default)({
     credentials: true,
 }));
 app.use((0, cookie_parser_1.default)());
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    next();
+});
 app.use("/users", users_routes_1.default);
 app.use("/posts", posts_routes_1.default);
 app.use("/auth", auth_routes_1.default);

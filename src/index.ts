@@ -24,6 +24,11 @@ app.use(
 );
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+	res.setHeader("Access-Control-Allow-Credentials", "true");
+	next();
+});
+
 app.use("/users", usersRoutes);
 app.use("/posts", postsRoutes);
 app.use("/auth", authRoutes);
