@@ -1,8 +1,7 @@
 import express from "express";
-import cors from "cors";
 import cookieParser from "cookie-parser";
 
-import { ORIGIN, PORT } from "./configs/configs";
+import { PORT } from "./configs/configs";
 
 import { db } from "./db/mongoose";
 
@@ -16,12 +15,6 @@ const app = express();
 app.disable("x-powered-by");
 
 app.use(express.json());
-app.use(
-	cors({
-		origin: ORIGIN,
-		credentials: true,
-	})
-);
 app.use(cookieParser());
 
 app.use("/users", usersRoutes);
