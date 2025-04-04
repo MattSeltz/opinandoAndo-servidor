@@ -23,7 +23,7 @@ app.use("/auth", authRoutes);
 app.use("/email", emailRoutes);
 
 app.get("/", (_, res) => {
-	res.send(`<h1>XYZ</h1>`);
+	res.send(`<h1>OpinandoAndo</h1>`);
 });
 
 app.listen(PORT, async () => {

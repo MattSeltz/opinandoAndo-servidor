@@ -14,7 +14,7 @@ export const sendPasswordResetEmail = async (req: Request, res: Response) => {
 	code = randCode;
 
 	const mailOptions = {
-		from: '"Soporte" <xyz.corp@gmail.com>',
+		from: '"Soporte" <OpinandoAndo.corp@gmail.com>',
 		to,
 		subject: "Restablece tu contraseña",
 		html: `
@@ -34,7 +34,7 @@ export const sendPasswordResetEmail = async (req: Request, res: Response) => {
     </div>
 
     <footer style="text-align: center; margin-top: 30px; font-size: 12px; color: #777;">
-        <p>&copy; 2025 XYZ. Todos los derechos reservados.</p>
+        <p>&copy; 2025 OpinandoAndo. Todos los derechos reservados.</p>
     </footer>
 </div>
     `,

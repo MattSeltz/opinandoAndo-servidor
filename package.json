@@ -1,7 +1,7 @@
 {
 	"name": "servidor",
 	"version": "1.0.0",
-	"description": "Servidor de la aplicación web 'XYZ'",
+	"description": "Servidor de la aplicación web 'OpinandoAndo'",
 	"main": "index.js",
 	"scripts": {
 		"start": "npm run build && node --env-file .env dist/index.js",
@@ -10,7 +10,7 @@
 	"keywords": [
 		"social",
 		"red",
-		"xyz"
+		"opinandoAndo"
 	],
 	"author": "Matías Seltzer",
 	"license": "ISC",

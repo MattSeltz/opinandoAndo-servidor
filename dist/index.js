@@ -29,7 +29,7 @@ app.use("/posts", posts_routes_1.default);
 app.use("/auth", auth_routes_1.default);
 app.use("/email", email_routes_1.default);
 app.get("/", (_, res) => {
-    res.send(`<h1>XYZ</h1>`);
+    res.send(`<h1>OpinandoAndo</h1>`);
 });
 app.listen(configs_1.PORT, () => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, mongoose_1.db)();
