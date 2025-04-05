@@ -26,4 +26,3 @@ El servidor está construido con **Express y TypeScript**, expone una API REST p
 - **JWT**
 - **Nodemailer**
 - **cookie-parser**
-- **dotenv**
